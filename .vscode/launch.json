@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI Server",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/bin/uvicorn",
+            "args": [
+                "app.main:app",
+                "--reload"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

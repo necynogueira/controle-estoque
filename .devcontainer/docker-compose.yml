@@ -1,0 +1,32 @@
+version: '3.4'
+
+networks:
+  default:
+    driver: bridge
+
+services:
+  controle-estoque:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    networks:
+      - default
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql # Defina sua senha de root
+      MYSQL_DATABASE: controle_estoque # Nome do banco de dados
+      MYSQL_USER: mysql # Nome do usuário do banco de dados
+      MYSQL_PASSWORD: mysql # Senha do usuário
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - default
+
+volumes:
+  mysql_data:
