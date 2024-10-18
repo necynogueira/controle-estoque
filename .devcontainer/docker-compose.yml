@@ -27,6 +27,9 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - default
+    command: --require_secure_transport=OFF
+    ports:
+      - "3306:3306"
 
 volumes:
   mysql_data:
